@@ -1,34 +1,7 @@
 .cardsBlock {
-    margin: 0 200px;
-    display: grid;
-    grid-template-columns: repeat(3, 282px);
-    grid-gap: 18px 18px;
+    margin: 40px 200px 0 200px;
+    display: flex;
+    flex-wrap: wrap;
     justify-content: center;
-}
-
-
-
-@media screen and (max-width: 1100px) {
-    .cardsBlock {
-        margin-top: 40px;
-        grid-template-columns: repeat(2, 282px);
-    }
-}
-
-@media screen and (max-width: 768px) {
-    .cardsBlock {
-        margin: 40px 40px;
-    }
-}
-
-@media screen and (max-width: 600px) {
-    .cardsBlock {
-        grid-template-columns: 282px;
-    }
-}
-
-@media screen and (max-width: 425px) {
-    .cardsBlock {
-        margin: 40px 20px;
-    }
+    gap: 18px;
 }

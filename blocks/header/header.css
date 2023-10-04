@@ -1,14 +1,16 @@
 @import url('../logo/logo.css');
 
 .header {
-    margin: 0 200px;
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 50px;
     min-height: 132px;
     display: flex;
     align-items: center;
     border-bottom: 1px solid #A5A5A5;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1100px) {
     .header {
         margin: 0 40px;
     }

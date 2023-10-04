@@ -3,3 +3,9 @@
 @import url('../blocks/root/root.css');
 @import url('../blocks/header/header.css');
 
+.body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: black;
+}

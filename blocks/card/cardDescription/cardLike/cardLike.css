@@ -1,0 +1,9 @@
+.cardLike {
+    background: url('../../../../images/like-inactive.svg') center no-repeat;
+    background-color: transparent;
+    border: none;
+    width: 21px;
+    height: 19px;
+    cursor: pointer;
+    transition: transform .3s linear;
+}

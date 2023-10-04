@@ -1,0 +1,9 @@
+@import url('./cardImage/cardImage.css');
+@import url('./cardDescription/cardDescription.css');
+
+.card {
+    width: 282px;
+    background-color: #fff;
+    border-radius: 10px;
+    min-height: 360px;
+}

@@ -1,0 +1,8 @@
+@import url('./popupInput/popupInput.css');
+@import url('./popupButton/popupButton.css');
+
+.popupForm {
+    margin-top: 60px;
+    display: flex;
+    flex-direction: column;
+}

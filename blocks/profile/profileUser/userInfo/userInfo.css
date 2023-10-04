@@ -1,0 +1,13 @@
+@import url('./userName/userName.css');
+@import url('./userJob/userJob.css');
+
+.userInfo {
+    max-width: 364px;
+    margin-left: 36px;
+}
+
+@media screen and (max-width: 1100px) {
+    .userInfo {
+        margin: 20px 0;
+    }
+}

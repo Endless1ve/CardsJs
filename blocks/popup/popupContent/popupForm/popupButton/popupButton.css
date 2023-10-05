@@ -18,3 +18,10 @@
 .popupButton-active:hover {
     opacity: .6;
 }
+
+
+@media screen and (max-width: 425px) {
+    .popupButton {
+        margin-top: 0px;
+    }
+}

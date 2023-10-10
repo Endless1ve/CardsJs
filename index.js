@@ -52,12 +52,14 @@ const initialCards = [
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/vladivostok.jpg'
   }
 ];
+const userCards = [];
+
 
 
 //cards functions
 function createCard(cardName, cardLink) {
   const card =
-    `<div class="card">
+    `<div class="card" id="${cardName}">
       <div class="cardImage" style='background-image: url(${cardLink})'>
         <button class="cardDeleteButton"></button>
       </div>
@@ -72,13 +74,15 @@ function createCard(cardName, cardLink) {
 function addCard(event) {
   event.preventDefault();
   //переменные значений инпутов формы
-  const name = form.elements.name;
-  const link = form.elements.link;
-
+  const name = form.elements.name.value;
+  const link = form.elements.link.value;
   //вызов функции для создания карточки
-  const card = createCard(name.value, link.value);
+  const card = createCard(name, link);
   //добавление карточки в контейнер
-  cardsContainer.insertAdjacentHTML('beforeend', card)
+  cardsContainer.insertAdjacentHTML('beforeend', card);
+
+  userCards.push({ name, link })
+  setCardInStorage(userCards);
   //очистка формы после добавления карточки
   form.reset();
   //закрывает попап после добавления
@@ -86,6 +90,23 @@ function addCard(event) {
   //делает кнопку в форме обратно не активной
   button.classList.remove('popupButton-active');
   button.setAttribute('disabled', true);
+
+}
+
+
+//добавление карточек в локальное хранилище
+function setCardInStorage(arr) {
+  const userCards = JSON.stringify(arr);
+  localStorage.setItem('cards', `${userCards}`);
+}
+
+//рендер карточек из локального хранилища
+function renderLocalStorageCards() {
+  const localCards = JSON.parse(localStorage.cards);
+  for (let i = 0; i < localCards.length; i++) {
+    const card = createCard(localCards[i].name, localCards[i].link);
+    cardsContainer.insertAdjacentHTML('beforeend', card)
+  };
 }
 
 function renderInitialCards(arr) {
@@ -119,6 +140,7 @@ function closePopup() {
 }
 
 renderInitialCards(initialCards);
+renderLocalStorageCards()
 
 //card events
 cardsContainer.addEventListener('click', likeCard);

@@ -2,11 +2,11 @@
 const popup = document.querySelector('.popup');
 const openPopupButton = document.querySelector('.profileButton');
 const closePopupButton = document.querySelector('.popupClose');
+
 //form variables
 const form = document.forms.newCard;
-const name = form.elements.name;
-const link = form.elements.link;
 const button = form.elements.submit;
+
 //cardsVariables
 const cardsContainer = document.querySelector('.cardsBlock');
 const likeButton = document.querySelectorAll('.cardLike');
@@ -55,32 +55,42 @@ const initialCards = [
 
 
 //cards functions
-function createCard(name, link) {
+function createCard(cardName, cardLink) {
   const card =
-      `<div class="card">
-      <div class="cardImage" style='background-image: url(${link})'>
+    `<div class="card">
+      <div class="cardImage" style='background-image: url(${cardLink})'>
         <button class="cardDeleteButton"></button>
       </div>
       <div class="cardDescription">
-        <h3 class="cardName">${name}</h3>
+        <h3 class="cardName">${cardName}</h3>
         <button class="cardLike"></button>
       </div>
     </div>`;
-    console.log(card);
-    return card;
+  return card;
 }
 
 function addCard(event) {
   event.preventDefault();
+  //переменные значений инпутов формы
+  const name = form.elements.name;
+  const link = form.elements.link;
+
+  //вызов функции для создания карточки
   const card = createCard(name.value, link.value);
+  //добавление карточки в контейнер
   cardsContainer.insertAdjacentHTML('beforeend', card)
+  //очистка формы после добавления карточки
   form.reset();
+  //закрывает попап после добавления
+  closePopup();
+  //делает кнопку в форме обратно не активной
   button.classList.remove('popupButton-active');
   button.setAttribute('disabled', true);
 }
 
 function renderInitialCards(arr) {
   for (let i = 0; i < arr.length; i++) {
+    //создает и добавляет карточку по каждому элементу массива
     const card = createCard(arr[i].name, arr[i].link);
     cardsContainer.insertAdjacentHTML('beforeend', card)
   }
@@ -96,8 +106,6 @@ function deleteCard(event) {
   }
 }
 
-renderInitialCards(initialCards);
-
 
 //popup functions
 function openPopup() {
@@ -110,7 +118,9 @@ function closePopup() {
   closePopupButton.removeEventListener('click', closePopup);
 }
 
-//card event
+renderInitialCards(initialCards);
+
+//card events
 cardsContainer.addEventListener('click', likeCard);
 cardsContainer.addEventListener('click', deleteCard);
 
@@ -118,10 +128,13 @@ cardsContainer.addEventListener('click', deleteCard);
 //popup event 
 openPopupButton.addEventListener('click', openPopup);
 
-//form event
+//form events
 form.addEventListener('submit', addCard);
 
 form.addEventListener('input', function () {
+  const name = form.elements.name;
+  const link = form.elements.link;
+  //проверка на заполненность инпутов для кнопки сабмита
   if (name.value.length === 0 || link.value.length === 0) {
     button.classList.remove('popupButton-active');
     button.setAttribute('disabled', true);

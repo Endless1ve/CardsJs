@@ -38,7 +38,7 @@ const initialCards = [
   {
     name: 'Владивосток',
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/vladivostok.jpg'
-   }
+  }
 ];
 
 const popup = document.querySelector('.popup');
@@ -63,8 +63,6 @@ function openPopup() {
 function formValidation() {
   const nameInput = addCardForm.elements.name;
   const linkInput = addCardForm.elements.link;
-  console.log(submitButton)
-  console.log(nameInput.value)
   if (nameInput.value.length === 0 || linkInput.value.length === 0) {
     submitButton.setAttribute('disabled', true);
     submitButton.classList.remove('popupButton-active');
@@ -88,10 +86,17 @@ function addCard(name, link) {
   return card;
 }
 
-function renderCard(name, link) {
-  const newCard = addCard(name, link);
+function renderCard(event) {
+  event.preventDefault();
+  const nameInput = addCardForm.elements.name;
+  const linkInput = addCardForm.elements.link;
+  const newCard = addCard(nameInput.value, linkInput.value);
   cardsBlock.insertAdjacentHTML('beforeend', newCard);
-} 
+  addCardForm.reset();
+  formValidation();
+}
+
+addCardForm.addEventListener('submit', renderCard);
 
 console.log(localStorage)
 openPopupButton.addEventListener('click', openPopup);

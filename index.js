@@ -103,24 +103,32 @@ function renderCard(event) {
   cardsBlock.insertAdjacentHTML('beforeend', newCard);
   addCardForm.reset();
   formValidation();
-  return {nameInput, linkInput};
+  return { nameInput, linkInput };
 }
-
 function addLocalCards(array) {
   if (!localStorage.cards) {
     localStorage.setItem('cards', JSON.stringify(array));
   }
 }
-
 function addNewLocalCard(name, link) {
   const localArr = Array.from(JSON.parse(localStorage.cards));
-  const newCard = {name, link};
+  const newCard = { name, link };
   localArr.push(newCard);
   localStorage.setItem('cards', JSON.stringify(localArr));
   console.log(JSON.parse(localStorage.cards))
 
 }
 
-addLocalCards(initialCards);
+function renderLocalCards() {
+  addLocalCards(initialCards);
+  const cards = Array.from(JSON.parse(localStorage.cards));
+  for (let i = 0; i < cards.length; i++) {
+    const newCard = addCard(cards[i].name, cards[i].link);
+    cardsBlock.insertAdjacentHTML('beforeend', newCard);
+  }
+  console.log(cards)
+}
+
+renderLocalCards();
 addCardForm.addEventListener('submit', renderCard);
 openPopupButton.addEventListener('click', openPopup);

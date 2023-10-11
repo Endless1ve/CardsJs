@@ -47,6 +47,8 @@ const openPopupButton = document.querySelector('.profileButton')
 const addCardForm = document.forms.newCard;
 const submitButton = addCardForm.elements.submit;
 
+const cardsBlock = document.querySelector('.cardsBlock');
+
 
 function closePopup() {
   popup.classList.remove('popup-active');
@@ -82,9 +84,14 @@ function addCard(name, link) {
       <p class="cardName">${name}</p>
       <button class="cardLike"></button>
     </div>
-  </div>`
+  </div>`;
+  return card;
 }
 
-addLocalCards();
+function renderCard(name, link) {
+  const newCard = addCard(name, link);
+  cardsBlock.insertAdjacentHTML('beforeend', newCard);
+} 
+
 console.log(localStorage)
 openPopupButton.addEventListener('click', openPopup);

@@ -1,43 +1,53 @@
 const initialCards = [
   {
     name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg',
+    likes: 0
   },
   {
     name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg',
+    likes: 0
   },
   {
     name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg',
+    likes: 0
   },
   {
     name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg',
+    likes: 0
   },
   {
     name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg',
+    likes: 0
   },
   {
     name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg',
+    likes: 0
   },
   {
     name: 'Нургуш',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/khrebet-nurgush.jpg'
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/khrebet-nurgush.jpg',
+    likes: 0
   },
   {
     name: 'Тулиновка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/tulinovka.jpg'
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/tulinovka.jpg',
+    likes: 0
   },
   {
     name: 'Остров Желтухина',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/zheltukhin-island.jpg'
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/zheltukhin-island.jpg',
+    likes: 0
   },
   {
     name: 'Владивосток',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/vladivostok.jpg'
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/vladivostok.jpg',
+    likes: 0
   }
 ];
 
@@ -71,7 +81,6 @@ function formValidation() {
     submitButton.classList.add('popupButton-active');
   }
 }
-
 function addCard(name, link) {
   const card = `
   <div class="card">
@@ -85,18 +94,33 @@ function addCard(name, link) {
   </div>`;
   return card;
 }
-
 function renderCard(event) {
   event.preventDefault();
   const nameInput = addCardForm.elements.name;
   const linkInput = addCardForm.elements.link;
   const newCard = addCard(nameInput.value, linkInput.value);
+  addNewLocalCard(nameInput.value, linkInput.value);
   cardsBlock.insertAdjacentHTML('beforeend', newCard);
   addCardForm.reset();
   formValidation();
+  return {nameInput, linkInput};
 }
 
-addCardForm.addEventListener('submit', renderCard);
+function addLocalCards(array) {
+  if (!localStorage.cards) {
+    localStorage.setItem('cards', JSON.stringify(array));
+  }
+}
 
-console.log(localStorage)
+function addNewLocalCard(name, link) {
+  const localArr = Array.from(JSON.parse(localStorage.cards));
+  const newCard = {name, link};
+  localArr.push(newCard);
+  localStorage.setItem('cards', JSON.stringify(localArr));
+  console.log(JSON.parse(localStorage.cards))
+
+}
+
+addLocalCards(initialCards);
+addCardForm.addEventListener('submit', renderCard);
 openPopupButton.addEventListener('click', openPopup);

@@ -20,3 +20,9 @@
 .cardDeleteButton:hover {
     opacity: .6;
 }
+
+@media screen and (max-width: 768px) {
+    .cardDeleteButton {
+        display: block;
+    }
+}

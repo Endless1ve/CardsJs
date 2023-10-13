@@ -91,7 +91,7 @@ function formValidation() {
     submitButton.classList.add('popupButton-active');
   }
 }
-function addCard(name, link, id, isLiked) {
+function addCard(name, link, id) {
   const card = `
   <div class="card" id="${id}">
     <div class="cardImage" style="background-image: url('${link}')">
@@ -130,7 +130,7 @@ function addNewLocalCard(name, link, id) {
   localArr.push(newCard);
   localStorage.setItem('cards', JSON.stringify(localArr));
 }
-function renderLocalCards() {
+function renderLocalCards() { 
   addLocalCards(initialCards);
   const cards = Array.from(JSON.parse(localStorage.cards));
   for (let i = 0; i < cards.length; i++) {
@@ -138,7 +138,7 @@ function renderLocalCards() {
     cardsBlock.insertAdjacentHTML('beforeend', newCard);
     if (cards[i].isLiked) {
       const card = document.getElementById(cards[i].id);
-      const like = card.querySelector('.cardLike').classList.add('cardLike-active');
+      card.querySelector('.cardLike').classList.add('cardLike-active');
     }
   }
 }

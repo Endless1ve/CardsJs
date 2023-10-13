@@ -66,6 +66,7 @@ const closePopupButton = document.querySelector('.popupClose');
 const openPopupButton = document.querySelector('.profileButton')
 const addCardForm = document.forms.newCard;
 const submitButton = addCardForm.elements.submit;
+const clearButton = document.querySelector('.clearLocalButton');
 
 const cardsBlock = document.querySelector('.cardsBlock');
 
@@ -150,7 +151,6 @@ function deleteCard(event) {
     cardsBlock.removeChild(card);
   }
 }
-
 function likeCard(event) {
   const cards = Array.from(JSON.parse(localStorage.cards));
   if (event.target.classList.contains('cardLike')) {
@@ -165,7 +165,13 @@ function likeCard(event) {
   }
 }
 
+function clearLocalStorage() {
+  localStorage.clear();
+  location.reload();
+}
+
 renderLocalCards();
+clearButton.addEventListener('click', clearLocalStorage);
 cardsBlock.addEventListener('click', likeCard);
 cardsBlock.addEventListener('click', deleteCard);
 addCardForm.addEventListener('submit', renderCard);

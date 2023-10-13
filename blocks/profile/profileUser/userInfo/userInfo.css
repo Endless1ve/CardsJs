@@ -6,7 +6,7 @@
     margin-left: 36px;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 620px) {
     .userInfo {
         margin: 20px 0;
     }

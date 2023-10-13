@@ -1,16 +1,15 @@
 .userName {
     font-family: 'Inter';
     font-weight: normal;
-    font-size: 54px;
-    line-height: 56px;
+    font-size: 40px;
+    line-height: 40px;
     color: #f1f1f1;
     margin: 0;
 }
 
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 620px) {
     .userName {
         text-align: center;
-        font-size: 46px;
     }
 }

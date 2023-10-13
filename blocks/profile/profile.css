@@ -1,0 +1,18 @@
+@import url('./profileUser/profileUser.css');
+@import url('./profileButton/profileButton.css');
+
+.profile {
+    width: 100%;
+    min-height: 300px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+@media screen and (max-width: 620px) {
+    .profile {
+        flex-direction: column;
+        margin-top: 40px;
+    }
+}

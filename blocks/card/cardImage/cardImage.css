@@ -2,7 +2,6 @@
 
 .cardImage {
     background-image: url('https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg');
-    height: 282px;
     background-size: cover;
     background-position: center;
     border-top-left-radius: 10px;

@@ -1,0 +1,21 @@
+@import url('./cardDeleteButton/cardDeleteButton.css');
+
+.cardImage {
+    background-image: url('https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg');
+    background-size: cover;
+    background-position: center;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    position: relative;
+}
+
+
+.cardImage::after {
+    content: '';
+    display: block;
+    width: 282px;
+    height: 282px;
+    background-color: rgba(0, 0, 0, .3);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}

@@ -4,6 +4,10 @@ import { formValidation } from "./formLogic.js";
 import { closeCardPopup } from "./popupLogic.js";
 
 function addCard(name, link, id) {
+    if(fetch(link).then((response) => response.ok)){
+        link = 'https://vsememy.ru/kartinki/wp-content/uploads/2023/02/tug4d-1.gif';
+    }
+    console.log(link);
     const card = `
     <div class="card" id="${id}">
       <div class="cardImage" style="background-image: url('${link}')">

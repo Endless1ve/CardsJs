@@ -117,6 +117,7 @@ function renderCard(event) {
 
   addCardForm.reset();
   formValidation();
+  closePopup()
 }
 function addLocalCards(array) {
   if (!localStorage.cards) {

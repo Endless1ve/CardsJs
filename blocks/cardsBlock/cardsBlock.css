@@ -1,4 +1,7 @@
+@import url('./noCards/noCards.css');
+
 .cardsBlock {
+    position: relative;
     margin-top: 40px;
     width: 100%;
     box-sizing: border-box;

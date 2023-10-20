@@ -1,7 +1,7 @@
-import { cardsBlock, addCardForm } from "./variables.js";
+import { cardsBlock, addCardForm, plug } from "./variables.js";
 import { addNewLocalCard } from "./localStorageLogic.js";
 import { formValidation } from "./formLogic.js";
-import { closePopup } from "./popupLogic.js";
+import { closeCardPopup } from "./popupLogic.js";
 
 function addCard(name, link, id) {
     const card = `
@@ -27,10 +27,10 @@ function renderCard(event) {
     addNewLocalCard(nameInput.value, linkInput.value, id);
 
     cardsBlock.insertAdjacentHTML('beforeend', newCard);
-
+    renderPlug();
     addCardForm.reset();
     formValidation();
-    closePopup()
+    closeCardPopup();
 }
 
 function deleteCard(event) {
@@ -40,8 +40,10 @@ function deleteCard(event) {
         const filtered = cards.filter(item => item.id !== card.id);
         localStorage.setItem('cards', JSON.stringify(filtered));
         cardsBlock.removeChild(card);
+        renderPlug();
     }
 }
+
 function likeCard(event) {
     const cards = Array.from(JSON.parse(localStorage.cards));
     if (event.target.classList.contains('cardLike')) {
@@ -56,4 +58,18 @@ function likeCard(event) {
     }
 }
 
-export { addCard, renderCard, deleteCard, likeCard }
+function renderPlug() {
+    const cards = Array.from(JSON.parse(localStorage.cards));
+    if (cards.length < 1) {
+        plug.classList.add('noCards-active');
+    }
+    else plug.classList.remove('noCards-active');
+}
+
+function deleteAllCards() {
+    const cards = document.querySelectorAll('.card');
+    cards.forEach(card => cardsBlock.removeChild(card));
+    localStorage.setItem('cards', JSON.stringify([])); 
+    renderPlug();
+}
+export { addCard, renderCard, deleteCard, likeCard, renderPlug, deleteAllCards }

@@ -1,22 +1,40 @@
-import { popup, closePopupButton, addCardForm } from "./variables.js";
+import { addCardPopup, confirmPopup, cardCloseButton, closeConfirmButton, addCardForm, noButton, yesButton } from "./variables.js";
 import { formValidation } from "./formLogic.js";
+import { deleteAllCards } from "./cardLogic.js";
 
-function closePopup() {
-    popup.classList.remove('popup-active');
-    closePopupButton.removeEventListener('click', closePopup);
+function closeCardPopup() {
+    addCardPopup.classList.remove('popup-active');
+    cardCloseButton.removeEventListener('click', closeCardPopup);
     addCardForm.removeEventListener('input', formValidation);
-    document.removeEventListener('keydown', closePopup);
 }
 
-function openPopup() {
-    popup.classList.add('popup-active');
-    closePopupButton.addEventListener('click', closePopup);
+function openCardPopup() {
+    addCardPopup.classList.add('popup-active');
+    cardCloseButton.addEventListener('click', closeCardPopup);
     addCardForm.addEventListener('input', formValidation);
     document.addEventListener('keydown', (e) => {
-        if(e.key === 'Escape') {
-            closePopup();
+        if (e.key === 'Escape') {
+            closeCardPopup();
         }
     });
 }
 
-export { closePopup, openPopup };
+function openConfirmPopup() {
+    confirmPopup.classList.add('popup-active');
+    yesButton.addEventListener('click', deleteAllCards);
+    yesButton.addEventListener('click', closeConfirmPopup);
+    closeConfirmButton.addEventListener('click', closeConfirmPopup);
+    noButton.addEventListener('click', closeConfirmPopup);
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            closeConfirmPopup();
+        }
+    });
+}
+
+function closeConfirmPopup() {
+    confirmPopup.classList.remove('popup-active');
+    noButton.removeEventListener('click', closeConfirmPopup);
+}
+
+export { closeCardPopup, openCardPopup, openConfirmPopup, closeConfirmPopup };

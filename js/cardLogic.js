@@ -4,10 +4,9 @@ import { formValidation } from "./formLogic.js";
 import { closeCardPopup } from "./popupLogic.js";
 
 function addCard(name, link, id) {
-    if(fetch(link).then((response) => response.ok)){
+    if(!link.includes('http')) {
         link = 'https://vsememy.ru/kartinki/wp-content/uploads/2023/02/tug4d-1.gif';
-    }
-    console.log(link);
+    };
     const card = `
     <div class="card" id="${id}">
       <div class="cardImage" style="background-image: url('${link}')">
@@ -21,7 +20,7 @@ function addCard(name, link, id) {
     return card;
 }
 
-function renderCard(event) {
+function renderCard(event) {    
     event.preventDefault();
 
     const nameInput = addCardForm.elements.name;
@@ -73,7 +72,7 @@ function renderPlug() {
 function deleteAllCards() {
     const cards = document.querySelectorAll('.card');
     cards.forEach(card => cardsBlock.removeChild(card));
-    localStorage.setItem('cards', JSON.stringify([])); 
+    localStorage.setItem('cards', JSON.stringify([]));
     renderPlug();
 }
 export { addCard, renderCard, deleteCard, likeCard, renderPlug, deleteAllCards }

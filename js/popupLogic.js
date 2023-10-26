@@ -10,8 +10,11 @@ function closeCardPopup() {
 
 function openCardPopup() {
     addCardPopup.classList.add('popup-active');
+
     cardCloseButton.addEventListener('click', closeCardPopup);
+
     addCardForm.addEventListener('input', formValidation);
+
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') {
             closeCardPopup();
@@ -21,10 +24,16 @@ function openCardPopup() {
 
 function openConfirmPopup() {
     confirmPopup.classList.add('popup-active');
-    yesButton.addEventListener('click', deleteAllCards);
-    yesButton.addEventListener('click', closeConfirmPopup);
+
+    yesButton.addEventListener('click', () => {
+        deleteAllCards();
+        closeConfirmPopup();
+    });
+
     closeConfirmButton.addEventListener('click', closeConfirmPopup);
+
     noButton.addEventListener('click', closeConfirmPopup);
+
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') {
             closeConfirmPopup();

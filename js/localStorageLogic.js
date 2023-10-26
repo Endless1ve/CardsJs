@@ -10,10 +10,12 @@ function addNewLocalCard(name, link, id) {
 }
 
 function renderLocalCards() {
+
     if (!localStorage.cards) {
         localStorage.setItem('cards', JSON.stringify([]));
     }
     renderPlug();
+
     const cards = Array.from(JSON.parse(localStorage.cards));
     for (let i = 0; i < cards.length; i++) {
         const newCard = addCard(cards[i].name, cards[i].link, cards[i].id, cards[i].isLiked);

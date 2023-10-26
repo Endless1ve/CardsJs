@@ -4,9 +4,11 @@ import { formValidation } from "./formLogic.js";
 import { closeCardPopup } from "./popupLogic.js";
 
 function addCard(name, link, id) {
-    if(!link.includes('http')) {
+
+    if (!link.includes('http')) {
         link = 'https://vsememy.ru/kartinki/wp-content/uploads/2023/02/tug4d-1.gif';
     };
+
     const card = `
     <div class="card" id="${id}">
       <div class="cardImage" style="background-image: url('${link}')">
@@ -20,7 +22,7 @@ function addCard(name, link, id) {
     return card;
 }
 
-function renderCard(event) {    
+function renderCard(event) {
     event.preventDefault();
 
     const nameInput = addCardForm.elements.name;
@@ -38,6 +40,7 @@ function renderCard(event) {
 
 function deleteCard(event) {
     const cards = Array.from(JSON.parse(localStorage.cards));
+
     if (event.target.classList.contains('cardDeleteButton')) {
         const card = event.target.closest('.card');
         const filtered = cards.filter(item => item.id !== card.id);
@@ -49,6 +52,7 @@ function deleteCard(event) {
 
 function likeCard(event) {
     const cards = Array.from(JSON.parse(localStorage.cards));
+
     if (event.target.classList.contains('cardLike')) {
         const card = event.target.closest('.card');
         event.target.classList.toggle('cardLike-active');
@@ -63,6 +67,7 @@ function likeCard(event) {
 
 function renderPlug() {
     const cards = Array.from(JSON.parse(localStorage.cards));
+
     if (cards.length < 1) {
         plug.classList.add('noCards-active');
     }

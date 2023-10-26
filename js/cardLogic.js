@@ -4,7 +4,6 @@ import { formValidation } from "./formLogic.js";
 import { closeCardPopup } from "./popupLogic.js";
 
 function addCard(name, link, id) {
-
     if (!link.includes('http')) {
         link = 'https://vsememy.ru/kartinki/wp-content/uploads/2023/02/tug4d-1.gif';
     };

@@ -21,31 +21,39 @@
                     <p class="userJob">Frontend-developer</p>
                 </div>
             </div>
-            <button class="button profileButton">+</button>
-        </div>
-        <div class="cardsBlock">
-            <div class="card">
-                <div class="cardImage">
-                    <button class="cardDeleteButton"></button>
-                </div>
-                <div class="cardDescription">
-                    <h3 class="cardName">Камчатка</h3>
-                    <button class="cardLike"></button>
-                </div>
+            <div class="profileButtons">
+                <button class="button profileButton">+</button>
+                <button class="button clearLocalButton">Удалить все</button>
             </div>
         </div>
-        <div class="popup">
+        <div class="cardsBlock">
+            <p class="noCards">Нет картинок в профиле</p>
+        </div>
+        <div class="popup addCard">
             <div class="popupContent">
-                <img src="./images/close.svg" alt="Кнопка закрытия" class="popupClose">
+                <img src="./images/close.svg" alt="Кнопка закрытия" class="popupClose cardClose">
                 <h3 class="popupTitle">Новое место</h3>
                 <form class="popupForm" name="newCard">
-                    <input type="text" class="popupInput" placeholder="Название">
-                    <input type="text" class="popupInput" placeholder="Ссылка на картинку">
-                    <button class="button popupButton">+</button>
+                    <input name="name" type="text" class="popupInput" placeholder="Название">
+                    <input name="link" type="text" class="popupInput" placeholder="Ссылка на картинку">
+                    <button name="submit" class="button popupButton" disabled>+</button>
                 </form>
             </div>
         </div>
+        <div class="popup confirmPopup">
+            <div class="popupContent">
+                <img src="./images/close.svg" alt="Кнопка закрытия" class="popupClose confirmClose">
+                <p class="popupTitle">Вы уверены?</p>
+                <div class="confirmButtons">
+                    <button class="button confirmButton yes">ДА</button>
+                    <button class="button confirmButton no">НЕТ</button>
+                </div>
+            </div>
+        </div>
     </div>
+    <script type="module" src="./js/variables.js"></script>
+    <script type="module" src="./js/popupLogic.js"></script>
+    <script type="module" src="./index.js"></script>
 </body>
 
 </html>

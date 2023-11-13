@@ -7,3 +7,7 @@
     cursor: pointer;
     transition: transform .3s linear;
 }
+
+.cardLike-active {
+    background: url('../../../../images/like-active.svg') center no-repeat;
+}

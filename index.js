@@ -18,13 +18,3 @@ cardsBlock.addEventListener("click", likeCard);
 cardsBlock.addEventListener("click", deleteCard);
 //рендер новой карточки
 addCardForm.addEventListener("submit", renderCard);
-
-function callback() {
-  const { latitude, longitude } = arguments[0].coords;
-  console.log(latitude, longitude);
-}
-
-function error() {
-  console.log("smth wrong");
-}
-navigator.geolocation.watchPosition(callback, error);

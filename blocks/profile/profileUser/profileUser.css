@@ -1,0 +1,14 @@
+@import url('./userPhoto/userPhoto.css');
+@import url('./userInfo/userInfo.css');
+
+.profileUser {
+    display: flex;
+    flex-direction: row;
+}
+
+@media screen and (max-width: 620px) {
+    .profileUser {
+        flex-direction: column;
+        align-items: center;
+    }
+}

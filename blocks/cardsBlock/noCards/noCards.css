@@ -1,0 +1,14 @@
+.noCards {
+    display: none;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: white;
+    font-size: 43px;
+    text-align: center;
+}
+
+.noCards-active {
+    display: block;
+}

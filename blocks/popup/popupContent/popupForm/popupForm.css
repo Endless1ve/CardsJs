@@ -1,0 +1,15 @@
+@import url('./popupInput/popupInput.css');
+@import url('./popupButton/popupButton.css');
+
+.popupForm {
+    margin-top: 60px;
+    display: flex;
+    flex-direction: column;
+}
+
+
+@media screen and (max-width: 425px) {
+    .popupForm {
+        margin-top: 30px;
+    }
+}

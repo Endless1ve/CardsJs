@@ -1,0 +1,13 @@
+.userJob {
+    font-family: 'Inter';
+    margin: 20px 0 0 0;
+    font-size: 20px;
+    line-height: 25px;
+    color: #f1f1f1;
+}
+
+@media screen and (max-width: 620px) {
+    .userJob {
+        text-align: center;
+    }
+}   

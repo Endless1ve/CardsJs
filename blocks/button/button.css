@@ -1,0 +1,14 @@
+.button {
+    font-family: 'Inter';
+    background-color: transparent;
+    border: 1px solid white;
+    color: white;
+    width: 150px;
+    height: 50px;
+    display: block;
+    cursor: pointer;
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    transition: all 1s ease;
+}

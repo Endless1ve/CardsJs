@@ -1,0 +1,11 @@
+@import url('./cardName/cardName.css');
+@import url('./cardLike/cardLike.css');
+
+.cardDescription {
+    display: flex;
+    min-height: 78px;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    padding: 0 22px;
+}
